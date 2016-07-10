@@ -1,0 +1,5 @@
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignementShopLibrary\bin\Debug\ConsignementShopLibrary.dll
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignementShopLibrary\bin\Debug\ConsignementShopLibrary.pdb
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignementShopLibrary\obj\Debug\ConsignementShopLibrary.dll
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignementShopLibrary\obj\Debug\ConsignementShopLibrary.pdb
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignementShopLibrary\obj\Debug\ConsignementShopLibrary.csprojResolveAssemblyReference.cache

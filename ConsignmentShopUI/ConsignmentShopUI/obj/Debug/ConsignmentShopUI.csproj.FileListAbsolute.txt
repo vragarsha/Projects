@@ -1,0 +1,11 @@
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\bin\Debug\ConsignmentShopUI.exe.config
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\bin\Debug\ConsignmentShopUI.exe
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\bin\Debug\ConsignmentShopUI.pdb
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\obj\Debug\ConsignmentShopUI.csprojResolveAssemblyReference.cache
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\obj\Debug\ConsignmentShopUI.ConsignementShop.resources
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\obj\Debug\ConsignmentShopUI.Properties.Resources.resources
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\obj\Debug\ConsignmentShopUI.csproj.GenerateResource.Cache
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\obj\Debug\ConsignmentShopUI.exe
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\obj\Debug\ConsignmentShopUI.pdb
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\bin\Debug\ConsignementShopLibrary.dll
+c:\users\ragar\documents\visual studio 2015\Projects\ConsignmentShopUI\ConsignmentShopUI\bin\Debug\ConsignementShopLibrary.pdb
