@@ -1,0 +1,93 @@
+<div class="row-fluid" ng-controller="AdvancedKpiController">
+
+    <div class="col-md-12">
+
+        <div class="row advanced-kpi-container">
+            
+            <div class="horizontal-panel">
+                <div class="horizontal-panel-body" ng-class="{'collapsed-width': isKpiCollapsed}">
+                    <div ng-if="!isKpiCollapsed">
+                        <div class="row">
+                            <ul class="nav nav-pills advanced-kpi-tab-list">
+                              <li role="presentation" ng-class="{'active': activeDataList == 'kpi'}" ng-click="activeDataList = 'kpi'"><a href="#">Asset KPIs</a></li>
+                              <li role="presentation" ng-class="{'active': activeDataList == 'analytics'}"><a href="#" ng-click="activeDataList = 'analytics'">Analytics</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div ng-if="activeDataList == 'kpi'">
+                            <div class="list-group kpi-list">
+                                <a href=""
+                                    data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{placeholder: 'keep', animate: true}"
+                                    ng-repeat="kpi in kpiList" 
+                                    ng-model="selectedKpi"
+                                    ng-click="selectedKpiChanged(kpi)" 
+                                    class="list-group-item"
+                                    ng-class="{'active': kpi.TagName == selectedKpi.TagName}">
+                                        {{kpi.PropertyName}}
+                                </a>
+                            </div>
+                        </div>
+
+                        <div ng-if="activeDataList == 'analytics'">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal-panel-header">
+                    <a ng-click="toggleKpiListPanel()" href=""><i class="fa fa-chevron-circle-left" ng-class="{'fa-chevron-circle-left': !isKpiCollapsed, 'fa-chevron-circle-right': isKpiCollapsed}"></i></a>
+                </div>
+            </div>
+
+            <div class="kpi-chart-area">
+                <div class="row-fluid gridster-toolbar">
+                    <div class="btn-group btn-group-sm">
+
+                        <button class="btn btn-primary" ng-disabled="false">Chart Controls</button>
+
+                        <button type="button" class="btn btn-default" ng-click="addWidget('lineChart')" ng-disabled="enableNewWidgetButton()"><i class="fa fa-line-chart"></i> Line Chart</button>
+
+                        <button type="button" class="btn btn-default" ng-click="addWidget('historicalBarChart')" ng-disabled="enableNewWidgetButton()"><i class="fa fa-bar-chart"></i> Bar Chart</button>
+
+                        <button type="button" class="btn btn-default" ng-click="addWidget('scatterChart')" ng-disabled="enableNewWidgetButton()"><i class="fa fa-area-chart"></i> Scatter Plot</button>
+
+                        <button type="button" class="btn btn-default" ng-click="addWidget('pieChart')" ng-disabled="enableNewWidgetButton()"><i class="fa fa-pie-chart"></i> Pie Chart</button>
+
+                        <button type="button" class="btn btn-default" ng-click="addWidget('discreteBarChart')" ng-disabled="enableNewWidgetButton()"><i class="fa fa-bar-chart"></i> Distribution Chart</button>
+
+                        <!-- <button type="button" class="btn btn-default" ng-click="addWidget('stackedAreaChart')" ng-disabled="enableNewWidgetButton()"><i class="fa fa-area-chart"></i> Stacked Area Chart</button> -->
+
+                        <button type="button" class="btn btn-default" ng-click="addWidget('lineWithFocusChart')" ng-disabled="enableNewWidgetButton()"><i class="fa fa-area-chart"></i> Focus Chart</button>
+                    </div>
+                </div>
+                <div class="row-row-fluid">
+                    <div class="gridster-layout">
+                        <div gridster="gridsterOptions">
+                            <ul>
+                                <li class="fcx-gridster-item" gridster-item="widget" ng-repeat="widget in widgets">
+                                    <div class="widget-container">
+                                        <div class="row widget-chart-header">
+                                            <h3>{{widget.name}}</h3>
+                                            <div class="widget-chart-header-buttons">
+                                                <a href="" ng-click="removeWidget(widget)"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="widget-chart-body" data-drop="true"
+                                        jqyoui-droppable="{multiple:true, onDrop: 'kpiDropedOnWidget'}">
+                                            <nvd3 options="widget.chart.options"
+                                                  data="widget.chart.data"
+                                                  api="widget.chart.api"
+                                                  config="widgetConfig"
+                                                  events="events"
+                                                  >
+                                            </nvd3>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div ng-init="init()">
+    <div class="modal-header fcx-modal-header">
+        <h4 class="content-title">Set Analytic Schedule</h4>
+    </div>
+    
+    <div class="modal-body fcx-modal-body">
+        
+        <div class="row a-schedule-favorites">
+            <div class="row-fluid" ng-show="showCustomerSelection">
+                <label>Select Customer</label><br>
+                <select ui-select2="{allowClear: false}" data-placeholder="Please select a Customer ..." ng-model="rootAsset" ng-change="selectedRootAssetChanged(rootAsset)" style="width:30%">
+                    <option value=""></option>
+                    <option ng-repeat="asset in assets" value="{{asset}}">{{asset.DisplayName}}</option>
+                </select>
+            </div>
+            <br>
+            <div class="row-fluid">
+                <div>
+                    <label>Favorite Schedules</label><br>
+                    <select ui-select2="{allowClear: false}" data-placeholder="Select schedule" ng-model="selectedSch" ng-change="selectedScheduleChanged(selectedSch)" ng-disabled="!selectedRootAssetId" style="width: 30%">
+                        <option value=""></option>
+                        <option ng-repeat="schedule in schedules" value="{{schedule}}">{{schedule.ScheduleDisplayName}}</option>
+                    </select>
+                    <!-- <div class="btn-group a-schedule-fav-button-bar"> -->
+                        <button class="btn btn-default" ng-click ="deleteFavorite()" ng-disabled="!selectedSchedule" style="height: 30px;">Delete</button>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <label>Schedule Details</label>
+        <div class="row a-schedule-details">
+            <p>To set/edit a schedule click on one or more days and enter the Start and End times</p>
+            
+            <div class="btn-group a-schedule-fav-button-bar">
+                <button class="btn btn-default" ng-click ="fullSchedule.days[0].isSelected = !fullSchedule.days[0].isSelected" ng-class="{'btn-success': fullSchedule.days[0].isSelected == true}" style="width: 100px">Sunday</button>
+                <button class="btn btn-default" ng-click ="fullSchedule.days[1].isSelected = !fullSchedule.days[1].isSelected" ng-class="{'btn-success': fullSchedule.days[1].isSelected == true}" style="width: 100px">Monday</button>
+                <button class="btn btn-default" ng-click ="fullSchedule.days[2].isSelected = !fullSchedule.days[2].isSelected" ng-class="{'btn-success': fullSchedule.days[2].isSelected == true}" style="width: 100px">Tuesday</button>
+                <button class="btn btn-default" ng-click ="fullSchedule.days[3].isSelected = !fullSchedule.days[3].isSelected" ng-class="{'btn-success': fullSchedule.days[3].isSelected == true}" style="width: 100px">Wednesday</button>
+                <button class="btn btn-default" ng-click ="fullSchedule.days[4].isSelected = !fullSchedule.days[4].isSelected" ng-class="{'btn-success': fullSchedule.days[4].isSelected == true}" style="width: 100px">Thursday</button>
+                <button class="btn btn-default" ng-click ="fullSchedule.days[5].isSelected = !fullSchedule.days[5].isSelected" ng-class="{'btn-success': fullSchedule.days[5].isSelected == true}" style="width: 100px">Friday</button>
+                <button class="btn btn-default" ng-click ="fullSchedule.days[6].isSelected = !fullSchedule.days[6].isSelected" ng-class="{'btn-success': fullSchedule.days[6].isSelected == true}" style="width: 100px">Saturday</button>
+            </div>
+
+            <div class="btn-group a-schedule-fav-button-bar">
+                <button class="btn time-window-container" style="width: 100px" ng-repeat="day in fullSchedule.days" >
+                    <ul class="time-windows-ul">
+                        <li class="time-window-li" ng-repeat="window in day.windows | orderBy:'start.utc'">
+                            <span class="li-start-text">{{window.start}}</span> - <span class="li-end-text">{{window.end}}</span>
+                        </li>
+                    </ul>
+                </button>
+            </div>
+        </div>
+
+        <div class="row schedule-grid-row">
+            <div class="timeWindowGridStyle" ng-grid="gridOptions" ></div>
+            <div class="schedule-grid-right-box">
+                <a class="all-day-check" href="" ng-click="setTo24Hours()"><i class="fa" ng-class="{'fa-check-square-o': sch.AllDay == true, 'fa-square-o': sch.AllDay == false}"> 24 Hours</i></a>
+
+                <a class="all-day-check" href="" ng-click="dtsChanged()"><i class="fa" ng-class="{'fa-check-square-o': fullSchedule.daylightSavings == true, 'fa-square-o': fullSchedule.daylightSavings == false}"> Observe Daylight Savings</i></a>
+            </div>
+        </div>
+        
+        <div class="row-fluid sch-btn-row">
+            <button ng-click="set()" class="btn btn-default" style="width: 90px" ng-disabled="allowToSet() == false"><i class="fa fa-edit"></i> Set</button>
+            <button ng-click="clear()" class="btn btn-default" style="width: 90px"><i class="fa fa-eraser"></i> Clear</button>
+            <button ng-click="showNameTextbox = true" class="btn btn-default" style="width: 90px"><i class="fa fa-star-o"></i> Favorite</button>
+        </div>
+        <div class="row-fluid sch-fav-name-row" ng-show="showNameTextbox">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter schedule name ..." ng-model="fullSchedule.scheduleName" style="width: 300px">
+                <button class="input-group-addon btn btn-primary" style="width: 75px; height: 34px;" ng-disabled="!fullSchedule.scheduleName" ng-click="saveAsFavorite(); showNameTextbox = false;">OK</button>
+                <button class="input-group-addon btn btn-default" style="width: 75px; height: 34px;" ng-click="showNameTextbox = false; fullSchedule.scheduleName = null">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cancel and Save Button start -->
+    <div class="modal-footer fcx-modal-footer">
+        <div class="row">
+            <button type="button" class="btn btn-primary pull-right" data-ng-click="save();" ng-disabled="saveDisabled()">Save</button>
+            <button type="button" class="btn btn-default pull-right" data-ng-click="cancel();">Cancel</button>
+        </div>
+        <!-- Cancel and save button end-->
+    </div>
+</div>
