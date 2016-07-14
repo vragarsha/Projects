@@ -8,6 +8,6 @@ Contains some of the work i have developed as an intern
 
 A simple vendor and item using windows form application
 
-## NodeProjects
+## Contactlistapp
 
 MEAN stack interactive contacts list application
