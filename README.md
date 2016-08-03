@@ -1,16 +1,16 @@
 # Code Sample
 
 ## Front-end
- 
-Contains some of the work i have developed as an intern
+
+Sample UI work for scheduling and data trends using d3 libraries
+
+## Contactlist Application
+
+MEAN stack interactive contacts list application while getting on speed with angularjs
 
 ## ConsignmentShopUi 
 
-A simple vendor and item using windows form application
-
-## Contactlistapp
-
-MEAN stack interactive contacts list application
+A simple vendor and item using windows form application using C#
 
 ## MovieFlix 
 
